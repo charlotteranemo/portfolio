@@ -1,0 +1,49 @@
+//Variables
+
+$baseColor: #5C2D44;
+$textColor: #404040;
+$accentColor: rgb(84, 141, 84);
+$lighterBaseColor: lighten($baseColor, 20);
+$lighterAccentColor: lighten($accentColor, 20);
+$textColor: #303030;
+
+$largeFont: montserrat, sans-serif;
+$navFont: tamarillo-jf, sans-serif;
+$pFont: 'Poppins', sans-serif;
+$hFont: iskra, sans-serif;
+
+//Fonts
+
+h1 {
+    font: 2.2em $hFont;
+    color: $textColor;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+h2 {
+    font: 1.9em $hFont;
+    color: $textColor;
+    text-align: center;
+}
+
+h3 {
+    font: 1.5em $hFont;
+    color: $textColor;
+}
+
+p, a, label, input, button, td {
+    font: 0.9em $pFont;
+    color: $textColor;
+}
+
+//Mixins
+
+@mixin scrollingBg($attachment) {
+    background-attachment: $attachment;
+    background-repeat: no-repeat;
+    height: 400px;
+    width: 100%;
+    background-size: cover;
+}

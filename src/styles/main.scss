@@ -1,0 +1,201 @@
+//Imports the reset and the base scss
+@import 'reset';
+@import 'base';
+
+//Main part of css
+body {
+    min-height: 150vh;
+}
+
+#header {
+    width: 100%;
+    height: 65px;
+    background-color: $baseColor;
+    transition: 0.4s ease-in-out;
+    position: fixed;
+    top: 0;
+    padding-top: 30px;
+    z-index: 1;
+    a {
+        color: white;
+        float: left;
+        margin-right: 40px;
+        margin-left: 40px;
+    }
+    nav {
+        .link {
+            font: 1.6em $navFont;
+            margin-right: 20px;
+        }
+    }
+    #nameLogo {
+        font: 1.6em $largeFont;
+        transition: 0.4s ease-in-out;
+    }
+}
+
+#mainText {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: linear-gradient($baseColor, $lighterBaseColor);
+}
+
+#bigText {
+    font: 2.2em $largeFont;
+    color: white;
+    #pink {
+        color: $accentColor;
+        font-weight: bold;
+    }
+}
+
+.showScroll {
+    opacity: 0;
+    transform: translateY(2em);
+    transition: transform 1s 0.25s ease-in-out, opacity 0.4s 0.25s ease-in-out;
+}
+
+.showScroll.isVisible { //If the showScroll elements is in viewport and has the isVisible class, slide in and fade in
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#bgScroll {
+    background-image: url("../pictures/first.jpg");
+    @include scrollingBg(fixed); //Includes scrollingBg mixin with fixed as attachment
+}
+
+#bgScroll2 {
+    background-image: url("../pictures/second.jpg");
+    @include scrollingBg(fixed);
+}
+
+#bgScroll3 {
+    background-image: url("../pictures/third.jpg");
+    @include scrollingBg(fixed);
+}
+
+
+#webList {
+    display: flex;
+    width: 900px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+    .picText {
+        position: relative;
+        width: 48%;
+        -webkit-box-shadow: 2px 6px 19px -1px rgba(0,0,0,0.75);
+        -moz-box-shadow: 2px 6px 19px -1px rgba(0,0,0,0.75);
+        box-shadow: 2px 6px 19px -1px rgba(0,0,0,0.75);
+        margin: 1%;
+        .portfolio {
+            width: 100%;
+            display: block;
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            opacity: 0;
+            transition: 0.5s ease;
+            background-color: rgb(240, 231, 231);
+            .text {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                -webkit-transform: translate(-50%, -50%);
+                -ms-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+                text-align: center;
+                h3 {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+    .picText:hover .overlay {
+        opacity: 1;
+    }
+}
+
+#edu, #emp {
+    width: 60%;
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 50px;
+    h3 {
+        margin-top: 20px;
+        word-wrap: break-word;
+    }
+    h1 {
+        border-bottom: 2px dashed $lighterBaseColor;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+}
+
+#bottomDiv {
+    width: 100%;
+    display: flex;
+}
+
+#contactDiv {
+    width: 70%;
+    background-color: $lighterBaseColor;
+    h2 {
+        margin-left: 150px;
+        margin-right: 150px;
+        text-align: left;
+        font-size: 2.6em;
+        margin-top: 50px;
+        margin-bottom: 30px;
+        a {
+            color: white;
+            word-wrap: break-word;
+        }
+    }
+    h3 {
+        margin-left: 150px;
+        margin-right: 150px;
+        font-size: 1.9em;
+        margin-bottom: 50px;
+    }
+}
+
+#colorBlock {
+    width: 30%;
+    background-color: lighten($lighterBaseColor, 20);
+}
+
+#footer {
+    background-color: $baseColor;
+    p {
+        color: white;
+        text-align: center;
+        padding: 40px;
+    }
+}
+
+#menu-btn {
+    display: none;
+}
+
+#mePic {
+    width: 80%;
+    margin: 10%;
+    margin-bottom: 2%;
+}
+
+#endP {
+    margin: 10%;
+}
+
+//Imports the media queries last
+@import 'media';
