@@ -45,21 +45,27 @@ body {
 #bigText {
     font: 2.2em $largeFont;
     color: white;
-    #pink {
+    .green {
+        color: $accentColor;
+        font-weight: bold;
+    }
+    opacity: 0;
+    transform: translateY(2em);
+}
+
+#IEbigText { //Extra element for Internet Explorer support
+    font: 2.2em $largeFont;
+    color: white;
+    .green {
         color: $accentColor;
         font-weight: bold;
     }
 }
 
-.showScroll {
-    opacity: 0;
-    transform: translateY(2em);
-    transition: transform 1s 0.25s ease-in-out, opacity 0.4s 0.25s ease-in-out;
-}
-
-.showScroll.isVisible { //If the showScroll elements is in viewport and has the isVisible class, slide in and fade in
+.showScroll { //If the showScroll elements is in viewport, slide in and fade in via JavaScript
     opacity: 1;
     transform: translateY(0);
+    transition: transform 1s 0.25s ease-in-out, opacity 0.4s 0.25s ease-in-out;
 }
 
 #bgScroll {

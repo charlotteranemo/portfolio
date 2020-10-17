@@ -35,22 +35,42 @@ function shrinkHeader() {
   }
 }
 
-//Borrowed show on scroll-function from online, only made small changes
+//Borrowed show on scroll-function from online, added compability to Internet Explorer
 
 var scroll = window.requestAnimationFrame ||
     function(callback){ window.setTimeout(callback, 1000/60)};
 
 var elementsToShow = document.querySelectorAll('.showScroll'); //Selects all elements that are going to slide and fade on scroll
 
+var IE = document.getElementById("IEbigText");
+var notIE = document.getElementById("bigText");
+
+//This function exists twice, here and at the bottom, for IE support
+window.onload = function() {
+  if((navigator.userAgent.indexOf("MSIE") != -1 ) || (!!document.documentMode == true )) {
+    notIE.style.display = "none";
+    IE.style.display = "block";
+  } else {
+    notIE.style.display = "none";
+    IE.style.display = "block";
+  }
+}
+
 function loop() {
 
-  elementsToShow.forEach(function (element) {
-    if (isElementInViewport(element)) { //Checks if element is visible on screen, and if so adds a class 'isVisible'
-      element.classList.add('isVisible');
-    } else {
-      element.classList.remove('isVisible');
-    }
-  });
+  if((navigator.userAgent.indexOf("MSIE") == -1 )) {
+    elementsToShow.forEach(function (element) {
+      if (isElementInViewport(element)) { //Checks if element is visible on screen, and if so adds CSS
+        element.style.opacity = "1";
+        element.style.transform = "translateY(0)";
+      } else {
+        element.style.transform = "translateY(2em)";
+        element.style.opacity = "0";
+      }
+    });
+  }
+
+  
 
   scroll(loop);
 }
@@ -114,4 +134,17 @@ window.onload = function() {
             menuOpen = false;
         }
     })
+}
+
+var IE = document.getElementById("IEbigText");
+var notIE = document.getElementById("bigText");
+
+window.onload = function() {
+  if((navigator.userAgent.indexOf("MSIE") != -1 ) || (!!document.documentMode == true )) {
+    notIE.style.display = "none";
+    IE.style.display = "block";
+  } else {
+    notIE.style.display = "block";
+    IE.style.display = "none";
+  }
 }
